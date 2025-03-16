@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center>
+        <h1>Employee</h1>
+        <table border="3px" width="800px">
+            <tr>
+                <th>empno</th>
+                <th>ename</th>
+                <th>job</th>
+                <th>mgr</th>
+                <th>hiredate</th> 
+                <th>sal</th>
+                <th>comm</th>
+                <th>deptno</th>    
+            </tr>
+            {% for eo in TEO %}
+            <tr>
+                <td>{{eo.empno}}</td>
+                <td>{{eo.ename}}</td>
+                <td>{{eo.job}}</td>
+                <td>{{eo.mgr.empno}}</td>
+                <td>{{eo.hiredate}}</td>
+                <td>{{eo.sal}}</td>
+                <td>{{eo.comm|default:''}}</td>
+                <td>{{eo.deptno.deptno}}</td>    
+            </tr>
+            {% endfor %}
+        </table>
+    </center>
+</body>
+</html>
