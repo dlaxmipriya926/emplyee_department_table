@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmpToMgrJoin</title>
+</head>
+<body>
+    <center>
+        <h1>EmpToMgrJoin</h1>
+        <table border="3px">
+            <tr>
+                <th>Empno</th>
+                <th>Ename</th>
+                <th>Job</th>
+                <th>Mgr</th>
+                <th>Sal</th>
+                <th>Hiredate</th>
+                <th>Comm</th>
+                <th>Deptno</th>
+
+                <th>MgrEmpno</th>
+                <th>MgrEname</th>
+                <th>MgrJob</th>
+                <th>MgrMgr</th>
+                <th>MgrSal</th>
+                <th>MgrHiredate</th>
+                <th>MgrComm</th>
+                <th>MgrDeptno</th>
+
+                
+            </tr>
+            {% for emo in QLEMO %}
+            <tr>
+                <!-- emp(parent) table data -->
+                <td>{{emo.empno}}</td>
+                <td>{{emo.ename}}</td>
+                <td>{{emo.job}}</td>
+                <td>{{emo.mgr.empno}}</td>
+                <td>{{emo.sal}}</td>
+                <td>{{emo.hiredate}}</td>
+                <td>{{emo.comm | default_if_none:''}}</td>
+                <td>{{emo.deptno.deptno}}</td>
+
+                <!-- emp(child) table data -->
+                <td>{{emo.mgr.empno}}</td>
+                <td>{{emo.mgr.ename}}</td>
+                <td>{{emo.mgr.job}}</td>
+                <td>{{emo.mgr.mgr.empno}}</td>
+                <td>{{emo.mgr.sal}}</td>
+                <td>{{emo.mgr.hiredate}}</td>
+                <td>{{emo.mgr.comm | default_if_none:''}}</td>
+                <td>{{emo.mgr.deptno.deptno}}</td>
+
+            </tr>
+            {% endfor %}
+        </table>
+    </center>
+</body>
+</html>

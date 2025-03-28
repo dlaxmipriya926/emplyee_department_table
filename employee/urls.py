@@ -18,10 +18,17 @@ from django.contrib import admin
 from django.urls import path
 from app.views import *
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('insert_dept/',insert_dept,name='insert_dept'),
     path('insert_emp/',insert_emp,name='insert_emp'),
     path('display_Dept/',display_dept,name='display_Dept'),
-     path('display_Emp/',display_emp,name='display_Emp'),
+    path('display_Emp/',display_emp,name='display_Emp'),
+    path('EmpToDeptJoin/',EmpToDeptJoin,name='EmpToDeptJoin'),
+    path('EmpToMgrJoin/',EmpToMgrJoin,name='EmpToMgrJoin'),
+    path('EmpToDeptAndMgr/',EmpToDeptAndMgr,name='EmpToDeptAndMgr'),
+    path('EmpToDeptByPR/',EmpToDeptByPR,name='EmpToDeptByPR'),
+    path('update_display/',update_display,name='update_display'),
+    path('delete_display/',delete_display,name='delete_display'),
 ]

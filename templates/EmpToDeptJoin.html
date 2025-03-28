@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Concept</title>
+</head>
+<body>
+    <center>
+        <h1>EmpToDeptJoin</h1>
+        <table border="3px">
+            <tr>
+                <th>Empno</th>
+                <th>Ename</th>
+                <th>Job</th>
+                <th>Mgr</th>
+                <th>Sal</th>
+                <th>Hiredate</th>
+                <th>Comm</th>
+                <th>Deptno</th>
+
+
+                <th>Dname</th>
+                <th>Deptno</th>
+                <th>Loc</th>
+
+            </tr>
+            {% for edo in QLEDO %}
+            <tr>
+                <!-- emp table data -->
+                <td>{{edo.empno}}</td>
+                <td>{{edo.ename}}</td>
+                <td>{{edo.job}}</td>
+                <td>{{edo.mgr.empno}}</td>
+                <td>{{edo.sal}}</td>
+                <td>{{edo.hiredate}}</td>
+                <td>{{edo.comm | default_if_none:''}}</td>
+                <td>{{edo.deptno.deptno}}</td>
+
+                <!-- dept table data -->
+                <td>{{edo.deptno.dname}}</td>
+                <td>{{edo.deptno.deptno}}</td>
+                <td>{{edo.deptno.loc}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </center>
+</body>
+</html>

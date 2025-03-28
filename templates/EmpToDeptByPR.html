@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmpToDeptByPR</title>
+</head>
+<body>
+    <center>
+        <h1>EmpToDeptByPR</h1>
+        <table border="3px">
+            <tr>
+                <th>Department Name</th>
+                <th colspan="3">Employee Details</th>
+            </tr>
+
+            <tr>
+                <th></th>
+                <th>Ename</th>
+                <th>Empno</th>
+                <th>Job</th>
+            </tr>
+            {% for do  in QLDO %}
+            <tr>
+                {% for eo in do.emp_set.all %}
+                <tr>
+                    <td>{{do.dname}}</td>
+                    <td>{{eo.ename}}</td>
+                    <td>{{eo.empno}}</td>
+                    <td>{{eo.job}}</td>
+                </tr>  
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    </center>
+</body>
+</html>

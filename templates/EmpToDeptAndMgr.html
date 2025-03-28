@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmpToDeptAndMgr</title>
+</head>
+<body>
+    <center>
+        <h1>EmpToDeptAndMgr</h1>
+        <table border="2px">
+            <tr>
+                <!-- emp child -->
+                <th>Empempno</th>
+                <th>Empename</th>
+                <th>Ejob</th>
+                <th>Esal</th>
+                <th>Emgr</th>
+                <th>Ehiredate</th>
+                <th>Ecomm</th>
+                <th>Edeptno</th>
+
+                <!-- dept parent --> 
+                <th>Dname</th>
+                <th>Dloc</th>
+                <th>Deptno</th>
+
+                <!-- parent mgr -->
+                <th>Mgrempno</th>
+                <th>Mgrename</th>
+                <th>Mjob</th>
+                <th>Msal</th>
+                <th>Mmgr</th>
+                <th>Mhiredate</th>
+                <th>Mcomm</th>
+                <th>Mdeptno</th>
+            </tr>
+            {% for EDMO in QLEDMO %}
+            <tr>
+                <td>{{EDMO.empno}}</td>
+                <td>{{EDMO.ename}}</td>
+                <td>{{EDMO.job}}</td>
+                <td>{{EDMO.sal}}</td>
+                <td>{{EDMO.mgr.empno}}</td>
+                <td>{{EDMO.hiredate}}</td>
+                <td>{{EDMO.comm|default_if_none:''}}</td>
+                <td>{{EDMO.deptno.deptno}}</td>
+
+                <td>{{EDMO.deptno.dname}}</td>
+                <td>{{EDMO.deptno.loc}}</td>
+                <td>{{EDMO.deptno.deptno}}</td>
+
+                <td>{{EDMO.mgr.empno}}</td>
+                <td>{{EDMO.mgr.ename}}</td>
+                <td>{{EDMO.mgr.job}}</td>
+                <td>{{EDMO.mgr.sal}}</td>
+                <td>{{EDMO.mgr.mgr.empno}}</td>
+                <td>{{EDMO.mgr.hiredate}}</td>
+                <td>{{EDMO.mgr.comm|default_if_none:''}}</td>
+                <td>{{EDMO.mgr.deptno.deptno}}</td>
+
+            </tr>
+            {% endfor %}
+        </table>
+    </center>
+</body>
+</html>
